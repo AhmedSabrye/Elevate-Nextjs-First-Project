@@ -7,5 +7,5 @@ export default async function page(){
   //   redirect('/api/auth/signin')
 
 
-  return<h1 className="text-9xl"> i'm server</h1>
+  return<h1 className="text-9xl"> im server</h1>
 }
