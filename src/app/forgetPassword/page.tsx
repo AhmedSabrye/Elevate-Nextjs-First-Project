@@ -1,6 +1,5 @@
 "use client";
-import LoginForm from "@/components/login/Login";
-import RegisterForm from "@/components/register/Register";
+import ForgetPasswordFinal from "@/components/forgetPassword/forgetPassword";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,7 +19,7 @@ export default function page() {
       </div>
       <div className="form col-span-2 px-10">
         <div className="links flex gap-6 justify-end">
-        <Link
+          <Link
             href={"/signin"}
             className="text-[#122D9C] font-medium cursor-pointer"
           >
@@ -33,7 +32,7 @@ export default function page() {
             Sign up
           </Link>
         </div>
-        <RegisterForm />
+        <ForgetPasswordFinal />
       </div>
     </div>
   );
