@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: FormEvent) => {
@@ -23,7 +23,7 @@ export default function LoginForm() {
     if (result?.error) {
       // Handle sign-in error
       console.log("Error signing in:", result.error);
-      setError(true)
+      setError(true);
     } else {
       // Redirect or handle success
       console.log("Sign-in successful!");
@@ -56,7 +56,11 @@ export default function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="off"
         />
-        {error? <p className="text-center text-red-600 ">email or password is incorrect</p>: null}
+        {error ? (
+          <p className="text-center text-red-600 ">
+            email or password is incorrect
+          </p>
+        ) : null}
         <Link
           href={"/forgetPassword"}
           className="text-xs text-[#122D9C]   text-end"
@@ -77,20 +81,11 @@ export default function LoginForm() {
         <div className="divider  h-[1px] bg-[#E7E7E7] w-12"></div>
       </div>
       <div className="social-login flex gap-4 ">
-        <div className="login-item flex justify-center hover:shadow-lg items-center border p-2 shadow-md rounded-lg cursor-pointer">
-          <Image width={20} height={20} alt="google" src={"/Vector.png"} />
-        </div>
-        <div className="login-item flex justify-center hover:shadow-lg items-center border p-2 shadow-md rounded-lg cursor-pointer">
-          <Image width={20} height={20} alt="google" src={"/Logo Google.png"} />
-        </div>
-        <div className="login-item flex justify-center hover:shadow-lg items-center border p-2 shadow-md rounded-lg cursor-pointer">
-          <Image width={20} height={20} alt="google" src={"/Logo.png"} />
-        </div>
         <div
           onClick={() => signIn("github", { callbackUrl: "/client" })}
           className="login-item flex justify-center hover:shadow-lg items-center border p-2 shadow-md rounded-lg cursor-pointer"
         >
-          <Image width={20} height={20} alt="google" src={"/Logo (1).png"} />
+          <i className="fa-brands fa-github-alt text-4xl"></i>
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 "use client";
 import LoginForm from "@/components/login/Login";
-import RegisterForm from "@/components/register/Register";
 import Image from "next/image";
 import Link from "next/link";
 

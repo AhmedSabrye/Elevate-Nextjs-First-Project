@@ -2,6 +2,14 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
+
+  // const roles = { admin:['/dashboard','/server','client'],
+  //   doctor:['client'],
+  //   manager:['server'],
+
+
+  // }
+
   if (request.cookies.has("next-auth.session-token")) {
     console.log("we found it don't worry");
   } else {

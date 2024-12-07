@@ -1,14 +1,20 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GitHubProvider from "next-auth/providers/github";
 
 export const OPTIONS: NextAuthOptions = {
   providers: [
+    
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID as string,
+      clientSecret: process.env.GITHUB_SECRET as string,
+    }),
     CredentialsProvider({
       credentials: {
         email: { label: "email", type: "email", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const body = {
           email: credentials?.email,
           password: credentials?.password,
@@ -30,9 +36,19 @@ export const OPTIONS: NextAuthOptions = {
       },
     }),
   ],
-  pages:{
-    signIn: '/signin',
-  }
+  pages: {
+    signIn: "/signin",
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      console.log("jwt callback user data", user);
+      console.log("jwt callback token", token);
+      return { ...token, ...user };
+    },
+    async session({ session, token }) {
+      return { ...session, ...token };
+    },
+  },
 };
 
 const handler = NextAuth(OPTIONS);
