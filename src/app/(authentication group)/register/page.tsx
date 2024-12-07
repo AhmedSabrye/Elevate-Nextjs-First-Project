@@ -36,7 +36,7 @@ export default function RegisterForm() {
       )
     ) {
       setErrorMsg("all inputs are Required");
-      return
+      return;
     }
     // email regex
     const emailRegex = /[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}/gm;
@@ -44,13 +44,16 @@ export default function RegisterForm() {
       setErrorMsg("email is not valid");
       return;
     }
-    const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-    if(!passwordRegex.test(body.password)){
-      setErrorMsg("Password Must contain capital letter, small letter, numbers and special characters and not less than 8");
+    const passwordRegex =
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    if (!passwordRegex.test(body.password)) {
+      setErrorMsg(
+        "Password Must contain capital letter, small letter, numbers and special characters and not less than 8"
+      );
       return;
     }
     const phoneRegex = /^01[0125][0-9]{8}$/;
-    if(!phoneRegex.test(body.phone)){
+    if (!phoneRegex.test(body.phone)) {
       setErrorMsg("phone number is not valid");
       return;
     }
@@ -72,7 +75,7 @@ export default function RegisterForm() {
     } else {
       if (finalresult.message.includes("in not allowed to be empty"))
         setErrorMsg("all inputs are required");
-      else{
+      else {
         setErrorMsg(finalresult.message);
       }
     }

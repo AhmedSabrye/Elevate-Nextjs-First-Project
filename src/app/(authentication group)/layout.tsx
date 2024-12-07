@@ -1,11 +1,12 @@
-"use client";
-import ForgetPasswordFinal from "@/components/forgetPassword/forgetPassword";
-import { signIn } from "next-auth/react";
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import { ReactNode } from 'react';
 
-export default function page() {
-  return (
+
+
+
+export default function nothing({children}:{children: React.ReactNode}){
+  return <div>
     <div className="login grid grid-cols-3 gap-8  space-y-10 h-screen">
       <div className="wlcome-elevate flex h-full flex-col justify-center  bg-[#F0F4FC] col-span-1 py-8 px-8 shadow-lg rounded-tr-[100px] rounded-br-[100px]">
         <h1 className="text-5xl font-semibold leading-tight">
@@ -32,8 +33,8 @@ export default function page() {
             Sign up
           </Link>
         </div>
-        <ForgetPasswordFinal />
+        {children}
       </div>
     </div>
-  );
+  </div>
 }

@@ -7,7 +7,7 @@ export default function ForgetPasswordFinal() {
   const [msg, setMsg] = useState("");
   const [err, seterr] = useState(false);
   const [email, setEmail] = useState("");
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent) => {
     const body = e.preventDefault();
@@ -25,15 +25,14 @@ export default function ForgetPasswordFinal() {
     const finalresult = await result.json();
 
     if (finalresult.message == "success") {
-      setMsg(finalresult.info)
+      setMsg(finalresult.info);
       setTimeout(() => {
-        router.push("/verifyOTP")
+        router.push("/verifyOTP");
       }, 2000);
-      seterr(false)
-      
+      seterr(false);
     } else {
-      setMsg(finalresult.message)
-      seterr(true)
+      setMsg(finalresult.message);
+      seterr(true);
     }
     console.log(body);
     console.log(finalresult);
@@ -53,7 +52,13 @@ export default function ForgetPasswordFinal() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {msg == "" ? null : <p className={`text-center ${err ? 'text-red-600' : "text-green-500"}`}>{msg}</p>}
+        {msg == "" ? null : (
+          <p
+            className={`text-center ${err ? "text-red-600" : "text-green-500"}`}
+          >
+            {msg}
+          </p>
+        )}
         <button
           type="submit"
           className="bg-[#4461F2] text-white font-light text-sm w-full p-3 rounded-2xl"

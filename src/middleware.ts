@@ -10,12 +10,9 @@ export function middleware(request: NextRequest) {
 
   // }
 
-  if (request.cookies.has("next-auth.session-token")) {
-    console.log("we found it don't worry");
-  } else {
-    console.log("can't find it maaaaaaaa");
+  if (!request.cookies.has("next-auth.session-token")) {
     return NextResponse.redirect(new URL("/api/auth/signin", request.url));
-  }
+  } 
 }
 
 export const config = {
